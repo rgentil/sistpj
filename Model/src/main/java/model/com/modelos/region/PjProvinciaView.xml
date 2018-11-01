@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="PjProvinciaView"
+  Version="12.2.1.11.3"
+  InheritPersonalization="merge"
+  SelectListFlags="1"
+  FromListFlags="1"
+  WhereFlags="1"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  SelectAllAttributes="false"
+  PageIterMode="Full">
+  <EntityUsage
+    Name="PjProvincia"
+    Entity="model.com.modelos.region.PjProvincia"/>
+  <ViewAttribute
+    Name="PrvId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="PrvId"
+    EntityUsage="PjProvincia"
+    AliasName="PRV_ID"/>
+  <ViewAttribute
+    Name="PrvNombre"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="PrvNombre"
+    EntityUsage="PjProvincia"
+    AliasName="PRV_NOMBRE"/>
+  <ViewAttribute
+    Name="PaisId"
+    PrecisionRule="true"
+    EntityAttrName="PaisId"
+    EntityUsage="PjProvincia"
+    AliasName="PAIS_ID"/>
+  <ViewAttribute
+    Name="PrvFechaFormacion"
+    PrecisionRule="true"
+    EntityAttrName="PrvFechaFormacion"
+    EntityUsage="PjProvincia"
+    AliasName="PRV_FECHA_FORMACION"/>
+  <ViewAttribute
+    Name="PrvArea"
+    PrecisionRule="true"
+    EntityAttrName="PrvArea"
+    EntityUsage="PjProvincia"
+    AliasName="PRV_AREA"/>
+  <ViewLinkAccessor
+    Name="PjLocalidadView"
+    ViewLink="model.com.modelos.region.FkLocPrvLink"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+</ViewObject>

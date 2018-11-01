@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="PjPais"
+  Version="12.2.1.11.3"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="PJ_PAIS"
+  AliasName="PjPais"
+  BindingStyle="OracleName">
+  <Attribute
+    Name="PaisId"
+    IsNotNull="true"
+    ColumnName="PAIS_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="PJ_PAIS"
+    PrimaryKey="true"/>
+  <Attribute
+    Name="PaisNombre"
+    IsNotNull="true"
+    Precision="4000"
+    ColumnName="PAIS_NOMBRE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PJ_PAIS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4000"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="PaisCodigo"
+    Precision="2"
+    ColumnName="PAIS_CODIGO"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PJ_PAIS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="2"/>
+    </DesignTime>
+  </Attribute>
+  <AccessorAttribute
+    Name="PjProvincia"
+    Association="model.com.modelos.region.FkPrvPaisAssoc"
+    AssociationEnd="model.com.modelos.region.FkPrvPaisAssoc.PjProvincia"
+    AssociationOtherEnd="model.com.modelos.region.FkPrvPaisAssoc.PjPais"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <Key
+    Name="PjPaisPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="PJ_PAIS_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.com.modelos.region.PjPais.PaisId"/>
+    </AttrArray>
+  </Key>
+</Entity>

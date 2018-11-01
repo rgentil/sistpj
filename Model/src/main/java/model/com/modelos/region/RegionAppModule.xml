@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+<!---->
+<AppModule
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="RegionAppModule"
+  Version="12.2.1.11.3"
+  InheritPersonalization="merge"
+  ClearCacheOnRollback="true">
+  <ViewUsage
+    Name="PjLocalidadView1"
+    ViewObjectName="model.com.modelos.region.PjLocalidadView"/>
+  <ViewUsage
+    Name="PjPaisView1"
+    ViewObjectName="model.com.modelos.region.PjPaisView"/>
+  <ViewUsage
+    Name="PjProvinciaView1"
+    ViewObjectName="model.com.modelos.region.PjProvinciaView"/>
+  <ViewUsage
+    Name="PjProvinciaView2"
+    ViewObjectName="model.com.modelos.region.PjProvinciaView"/>
+  <ViewUsage
+    Name="PjLocalidadView2"
+    ViewObjectName="model.com.modelos.region.PjLocalidadView"/>
+  <ViewLinkUsage
+    Name="FkPrvPaisLink1"
+    ViewLinkObjectName="model.com.modelos.region.FkPrvPaisLink"
+    SrcViewUsageName="model.com.modelos.region.RegionAppModule.PjPaisView1"
+    DstViewUsageName="model.com.modelos.region.RegionAppModule.PjProvinciaView2"
+    Reversed="false"/>
+  <ViewLinkUsage
+    Name="FkLocPrvLink1"
+    ViewLinkObjectName="model.com.modelos.region.FkLocPrvLink"
+    SrcViewUsageName="model.com.modelos.region.RegionAppModule.PjProvinciaView1"
+    DstViewUsageName="model.com.modelos.region.RegionAppModule.PjLocalidadView2"
+    Reversed="false"/>
+</AppModule>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="FkPrvPaisLink"
+  Version="12.2.1.11.3"
+  InheritPersonalization="merge"
+  EntityAssociation="model.com.modelos.region.FkPrvPaisAssoc">
+  <ViewLinkDefEnd
+    Name="PjPaisView"
+    Cardinality="1"
+    Source="true"
+    Owner="model.com.modelos.region.PjPaisView">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="PjPaisView"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.com.modelos.region.PjPaisView.PaisId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="PjProvinciaView"
+    Cardinality="-1"
+    Owner="model.com.modelos.region.PjProvinciaView">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="PjProvinciaView"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.com.modelos.region.PjProvinciaView.PaisId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+</ViewLink>
