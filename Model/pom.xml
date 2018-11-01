@@ -9,7 +9,7 @@
     <resources>
       <resource>
         <directory>${basedir}</directory>
-        <includes>
+        <includes>        
           <include>*</include>
         </includes>
       </resource>
