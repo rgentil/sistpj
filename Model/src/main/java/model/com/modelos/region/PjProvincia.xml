@@ -9,7 +9,8 @@
   DBObjectType="table"
   DBObjectName="PJ_PROVINCIA"
   AliasName="PjProvincia"
-  BindingStyle="OracleName">
+  BindingStyle="OracleName"
+  xmlns:validation="http://xmlns.oracle.com/adfm/validation">
   <Attribute
     Name="PrvId"
     IsNotNull="true"
@@ -31,6 +32,22 @@
     <DesignTime>
       <Attr Name="_DisplaySize" Value="20"/>
     </DesignTime>
+    <validation:PreDefinedValidationBean
+      Name="PrvNombreRule0"
+      ResId="model.com.modelos.region.PjProvincia.PrvNombre_Rule_0"
+      Description="Precision : (20)"
+      ValName="Precision : (20)"
+      Subtype="PRECISION_SCALE"/>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.com.modelos.region.PjProvincia.PrvNombre_LABEL"/>
+        <LABEL_PLURAL
+          ResId="model.com.modelos.region.PjProvincia.PrvNombre_LABEL_PLURAL"/>
+        <TOOLTIP
+          ResId="model.com.modelos.region.PjProvincia.PrvNombre_TOOLTIP"/>
+      </SchemaBasedProperties>
+    </Properties>
   </Attribute>
   <Attribute
     Name="PaisId"
@@ -45,10 +62,39 @@
     SQLType="DATE"
     Type="java.sql.Timestamp"
     ColumnType="DATE"
-    TableName="PJ_PROVINCIA"/>
+    TableName="PJ_PROVINCIA">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.com.modelos.region.PjProvincia.PrvFechaFormacion_LABEL"/>
+        <TOOLTIP
+          ResId="model.com.modelos.region.PjProvincia.PrvFechaFormacion_TOOLTIP"/>
+        <FMT_FORMAT
+          ResId="model.com.modelos.region.PjProvincia.PrvFechaFormacion_FMT_FORMAT"/>
+        <FMT_FORMATTER
+          ResId="model.com.modelos.region.PjProvincia.PrvFechaFormacion_FMT_FORMATTER"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
   <Attribute
     Name="PrvArea"
     ColumnName="PRV_AREA"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="PJ_PROVINCIA">
+    <validation:RangeValidationBean
+      Name="PrvAreaRule0"
+      ResId="model.com.modelos.region.PjProvincia.PrvArea_Rule_0"
+      OnAttribute="PrvArea"
+      OperandType="LITERAL"
+      Inverse="false"
+      MinValue="1"
+      MaxValue="999999"/>
+  </Attribute>
+  <Attribute
+    Name="RegId"
+    ColumnName="REG_ID"
     SQLType="NUMERIC"
     Type="java.math.BigDecimal"
     ColumnType="NUMBER"
@@ -67,6 +113,13 @@
     AssociationOtherEnd="model.com.modelos.region.FkLocPrvAssoc.PjProvincia"
     Type="oracle.jbo.RowIterator"
     IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="PjRegion"
+    Association="model.com.modelos.region.FkPrvRegAssoc"
+    AssociationEnd="model.com.modelos.region.FkPrvRegAssoc.PjRegion"
+    AssociationOtherEnd="model.com.modelos.region.FkPrvRegAssoc.PjProvincia"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
   <Key
     Name="PjProvinciaPk"
     PrimaryKey="true">
@@ -75,6 +128,17 @@
     </DesignTime>
     <AttrArray Name="Attributes">
       <Item Value="model.com.modelos.region.PjProvincia.PrvId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="uk_PjProvincia">
+    <DesignTime>
+      <Attr Name="_isNotNull" Value="true"/>
+      <Attr Name="_isUnique" Value="true"/>
+      <Attr Name="_DBObjectName" Value="UK_PJ_PROVINCIA"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.com.modelos.region.PjProvincia.RegId"/>
     </AttrArray>
   </Key>
   <Key
@@ -88,4 +152,19 @@
       <Item Value="model.com.modelos.region.PjProvincia.PaisId"/>
     </AttrArray>
   </Key>
+  <Key
+    Name="fk_PjProvincia">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="PJ_REGION_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="FK_PJ_PROVINCIA"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.com.modelos.region.PjProvincia.RegId"/>
+    </AttrArray>
+  </Key>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.ModelBundle"/>
+  </ResourceBundle>
 </Entity>

@@ -1,0 +1,180 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <f:view>
+        <af:document title="Region" id="d1" binding="#{backingBeanScope.backing_paginas_region_Region.d1}">
+            <af:messages id="m1" binding="#{backingBeanScope.backing_paginas_region_Region.m1}"/>
+            <af:form id="f1" binding="#{backingBeanScope.backing_paginas_region_Region.f1}">
+                <af:pageTemplate viewId="/oracle/templates/tabletFirstTemplate.jspx" id="pt1">
+                    <f:facet name="header"/>
+                    <f:facet name="status"/>
+                    <f:facet name="appNav">
+                        <af:link actionListener="#{bindings.Commit.execute}" text="Commit"
+                                 disabled="#{!bindings.Commit.enabled}" id="l1"/>
+                        <af:spacer width="10" height="10" id="s1"/>
+                        <af:link actionListener="#{bindings.Rollback.execute}" text="Rollback"
+                                 disabled="#{!bindings.Rollback.enabled}" immediate="true" id="l2">
+                            <af:resetActionListener/>
+                        </af:link>
+                    </f:facet>
+                    <f:facet name="globalLinks"/>
+                    <f:facet name="footer"/>
+                    <f:facet name="center">
+                        <af:panelDashboard id="pd1" binding="#{backingBeanScope.backing_paginas_region_Region.pd1}"
+                                           columns="2" rowHeight="350px">
+                            <af:panelBox text="Provincias" id="pb1"
+                                         binding="#{backingBeanScope.backing_paginas_region_Region.pb1}">
+                                <f:facet name="toolbar"/>
+                                <af:table value="#{bindings.PjProvinciaView2.collectionModel}" var="row"
+                                          rows="#{bindings.PjProvinciaView2.rangeSize}"
+                                          emptyText="#{bindings.PjProvinciaView2.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                          rowBandingInterval="0"
+                                          selectedRowKeys="#{bindings.PjProvinciaView2.collectionModel.selectedRow}"
+                                          selectionListener="#{bindings.PjProvinciaView2.collectionModel.makeCurrent}"
+                                          rowSelection="single" fetchSize="#{bindings.PjProvinciaView2.rangeSize}"
+                                          filterModel="#{bindings.PjProvinciaView2Query.queryDescriptor}"
+                                          filterVisible="true"
+                                          queryListener="#{bindings.PjProvinciaView2Query.processQuery}" varStatus="vs"
+                                          id="t1" binding="#{backingBeanScope.backing_paginas_region_Region.t1}">
+                                    <?audit suppress oracle.adf.faces.compreqsummary?><?audit suppress oracle.adf.faces.tableneedsrowheader?>
+                                    <af:column sortProperty="#{bindings.PjProvinciaView2.hints.PrvId}"
+                                               filterable="true" sortable="true"
+                                               headerText="#{bindings.PjProvinciaView2.hints.PrvId.label}" id="c1">
+                                        <af:outputText value="#{row.PrvId}"
+                                                       shortDesc="#{bindings.PjProvinciaView2.hints.PrvId.tooltip}"
+                                                       id="ot1">
+                                            <af:convertNumber groupingUsed="false"
+                                                              pattern="#{bindings.PjProvinciaView2.hints.PrvId.format}"/>
+                                        </af:outputText>
+                                    </af:column>
+                                    <af:column sortProperty="#{bindings.PjProvinciaView2.hints.PrvNombre}"
+                                               filterable="true" sortable="true"
+                                               headerText="#{bindings.PjProvinciaView2.hints.PrvNombre.label}" id="c2">
+                                        <af:outputText value="#{row.PrvNombre}"
+                                                       shortDesc="#{bindings.PjProvinciaView2.hints.PrvNombre.tooltip}"
+                                                       id="ot2"/>
+                                    </af:column>
+                                </af:table>
+                            </af:panelBox>
+                            <af:panelBox text="Detalles" id="pb3"
+                                         binding="#{backingBeanScope.backing_paginas_region_Region.pb3}">
+                                <f:facet name="toolbar"/>
+                                <af:panelFormLayout id="pfl1"
+                                                    binding="#{backingBeanScope.backing_paginas_region_Region.pfl1}">
+                                    <af:inputText value="#{bindings.PrvId.inputValue}"
+                                                  label="#{bindings.PrvId.hints.label}"
+                                                  required="#{bindings.PrvId.hints.mandatory}"
+                                                  columns="#{bindings.PrvId.hints.displayWidth}"
+                                                  maximumLength="#{bindings.PrvId.hints.precision}"
+                                                  shortDesc="#{bindings.PrvId.hints.tooltip}" id="it1"
+                                                  binding="#{backingBeanScope.backing_paginas_region_Region.it1}">
+                                        <f:validator binding="#{bindings.PrvId.validator}"/>
+                                        <af:convertNumber groupingUsed="false" pattern="#{bindings.PrvId.format}"/>
+                                    </af:inputText>
+                                    <af:inputText value="#{bindings.PrvNombre.inputValue}"
+                                                  label="#{bindings.PrvNombre.hints.label}"
+                                                  required="#{bindings.PrvNombre.hints.mandatory}"
+                                                  columns="#{bindings.PrvNombre.hints.displayWidth}"
+                                                  maximumLength="#{bindings.PrvNombre.hints.precision}"
+                                                  shortDesc="#{bindings.PrvNombre.hints.tooltip}" id="it2"
+                                                  binding="#{backingBeanScope.backing_paginas_region_Region.it2}">
+                                        <f:validator binding="#{bindings.PrvNombre.validator}"/>
+                                    </af:inputText>
+                                    <af:inputText value="#{bindings.PaisId.inputValue}"
+                                                  label="#{bindings.PaisId.hints.label}"
+                                                  required="#{bindings.PaisId.hints.mandatory}"
+                                                  columns="#{bindings.PaisId.hints.displayWidth}"
+                                                  maximumLength="#{bindings.PaisId.hints.precision}"
+                                                  shortDesc="#{bindings.PaisId.hints.tooltip}" id="it3"
+                                                  binding="#{backingBeanScope.backing_paginas_region_Region.it3}">
+                                        <f:validator binding="#{bindings.PaisId.validator}"/>
+                                        <af:convertNumber groupingUsed="false" pattern="#{bindings.PaisId.format}"/>
+                                    </af:inputText>
+                                    <af:inputDate value="#{bindings.PrvFechaFormacion.inputValue}"
+                                                  label="#{bindings.PrvFechaFormacion.hints.label}"
+                                                  required="#{bindings.PrvFechaFormacion.hints.mandatory}"
+                                                  columns="#{bindings.PrvFechaFormacion.hints.displayWidth}"
+                                                  shortDesc="#{bindings.PrvFechaFormacion.hints.tooltip}" id="id1"
+                                                  binding="#{backingBeanScope.backing_paginas_region_Region.id1}">
+                                        <f:validator binding="#{bindings.PrvFechaFormacion.validator}"/>
+                                        <af:convertDateTime pattern="#{bindings.PrvFechaFormacion.format}"/>
+                                    </af:inputDate>
+                                    <af:inputText value="#{bindings.PrvArea.inputValue}"
+                                                  label="#{bindings.PrvArea.hints.label}"
+                                                  required="#{bindings.PrvArea.hints.mandatory}"
+                                                  columns="#{bindings.PrvArea.hints.displayWidth}"
+                                                  maximumLength="#{bindings.PrvArea.hints.precision}"
+                                                  shortDesc="#{bindings.PrvArea.hints.tooltip}" id="it4"
+                                                  binding="#{backingBeanScope.backing_paginas_region_Region.it4}">
+                                        <f:validator binding="#{bindings.PrvArea.validator}"/>
+                                        <af:convertNumber groupingUsed="false" pattern="#{bindings.PrvArea.format}"/>
+                                    </af:inputText>
+                                    <af:inputComboboxListOfValues id="regIdId"
+                                                                  popupTitle="Search and Select: #{bindings.RegId.hints.label}"
+                                                                  value="#{bindings.RegId.inputValue}"
+                                                                  label="#{bindings.RegId.hints.label}"
+                                                                  model="#{bindings.RegId.listOfValuesModel}"
+                                                                  required="#{bindings.RegId.hints.mandatory}"
+                                                                  columns="#{bindings.RegId.hints.displayWidth}"
+                                                                  shortDesc="#{bindings.RegId.hints.tooltip}">
+                                        <f:validator binding="#{bindings.RegId.validator}"/>
+                                        <af:convertNumber groupingUsed="false" pattern="#{bindings.RegId.format}"/>
+                                    </af:inputComboboxListOfValues>
+                                </af:panelFormLayout>
+                            </af:panelBox>
+                            <af:panelBox text="Areas" id="pb4"
+                                         binding="#{backingBeanScope.backing_paginas_region_Region.pb4}">
+                                <f:facet name="toolbar"/>
+                                <dvt:barChart orientation="vertical" id="barChart1" var="row" zoomAndScroll="live"
+                                              value="#{bindings.PjProvinciaView21.collectionModel}"
+                                              binding="#{backingBeanScope.backing_paginas_region_Region.barChart1}">
+                                    <dvt:chartLegend rendered="false" id="cl1"/>
+                                    <f:facet name="dataStamp">
+                                        <dvt:chartDataItem id="di1" value="#{row.PrvArea}" group="#{row.PrvNombre}"
+                                                           binding="#{backingBeanScope.backing_paginas_region_Region.di1}"/>
+                                    </f:facet>
+                                </dvt:barChart>
+                            </af:panelBox>
+                            <af:panelBox text="PanelBox2" id="pb2"
+                                         binding="#{backingBeanScope.backing_paginas_region_Region.pb2}">
+                                <f:facet name="toolbar"/>
+                            </af:panelBox>
+                        </af:panelDashboard>
+                    </f:facet>
+                    <f:facet name="start">
+                        <af:listView value="#{bindings.PjPaisView1.collectionModel}" var="item" selection="single"
+                                     emptyText="#{bindings.PjPaisView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                     fetchSize="#{bindings.PjPaisView1.rangeSize}" id="lv1"
+                                     binding="#{backingBeanScope.backing_paginas_region_Region.lv1}"
+                                     selectionListener="#{bindings.PjPaisView1.treeModel.makeCurrent}">
+                            <af:listItem id="li1" binding="#{backingBeanScope.backing_paginas_region_Region.li1}">
+                                <af:panelGridLayout id="pgl1"
+                                                    binding="#{backingBeanScope.backing_paginas_region_Region.pgl1}">
+                                    <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr1"
+                                                binding="#{backingBeanScope.backing_paginas_region_Region.gr1}">
+                                        <af:gridCell marginStart="5px" width="20%" id="gc1"
+                                                     binding="#{backingBeanScope.backing_paginas_region_Region.gc1}">
+                                            <af:outputFormatted value="#{item.bindings.PaisCodigo.inputValue}"
+                                                                id="of1"
+                                                                binding="#{backingBeanScope.backing_paginas_region_Region.of1}"/>
+                                        </af:gridCell>
+                                        <af:gridCell marginStart="5px" width="80%" marginEnd="5px" id="gc2"
+                                                     binding="#{backingBeanScope.backing_paginas_region_Region.gc2}">
+                                            <af:outputFormatted value="#{item.bindings.PaisNombre.inputValue}"
+                                                                id="of2"
+                                                                binding="#{backingBeanScope.backing_paginas_region_Region.of2}"/>
+                                        </af:gridCell>
+                                    </af:gridRow>
+                                </af:panelGridLayout>
+                            </af:listItem>
+                        </af:listView>
+                    </f:facet>
+                    <f:facet name="end"/>
+                    <f:attribute name="endWidth" value="0px"/>
+                </af:pageTemplate>
+            </af:form>
+        </af:document>
+    </f:view>
+    <!--oracle-jdev-comment:auto-binding-backing-bean-name:backing_paginas_region_Region-->
+</jsp:root>

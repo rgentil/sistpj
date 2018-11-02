@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.11.3" id="RegionPageDef"
+                Package="paginas.region">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="PjPaisView1" RangeSize="25" DataControl="RegionAppModuleDataControl" id="PjPaisView1Iterator"/>
+    <iterator Binds="PjProvinciaView2" RangeSize="-1" DataControl="RegionAppModuleDataControl"
+              id="PjProvinciaView2Iterator"/>
+    <searchRegion Binds="PjProvinciaView2Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="PjProvinciaView2Query"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="PjPaisView1Iterator" id="PjPaisView1">
+      <nodeDefinition DefName="model.com.modelos.region.PjPaisView" Name="PjPaisView10">
+        <AttrNames>
+          <Item Value="PaisCodigo"/>
+          <Item Value="PaisNombre"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="PjProvinciaView2Iterator" id="PjProvinciaView2">
+      <nodeDefinition DefName="model.com.modelos.region.PjProvinciaView" Name="PjProvinciaView20">
+        <AttrNames>
+          <Item Value="PrvId"/>
+          <Item Value="PrvNombre"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="PjProvinciaView2Iterator" id="PrvId">
+      <AttrNames>
+        <Item Value="PrvId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PjProvinciaView2Iterator" id="PrvNombre">
+      <AttrNames>
+        <Item Value="PrvNombre"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PjProvinciaView2Iterator" id="PaisId">
+      <AttrNames>
+        <Item Value="PaisId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PjProvinciaView2Iterator" id="PrvFechaFormacion">
+      <AttrNames>
+        <Item Value="PrvFechaFormacion"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PjProvinciaView2Iterator" id="PrvArea">
+      <AttrNames>
+        <Item Value="PrvArea"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="PjProvinciaView2Iterator" id="PjProvinciaView21" ChangeEventPolicy="ppr">
+      <nodeDefinition DefName="model.com.modelos.region.PjProvinciaView" Name="PjProvinciaView21">
+        <AttrNames>
+          <Item Value="PrvArea"/>
+          <Item Value="PrvNombre"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <listOfValues IterBinding="PjProvinciaView2Iterator" StaticList="false" Uses="regionesLOV" id="RegId"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="RegionAppModuleDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="RegionAppModuleDataControl"/>
+  </bindings>
+</pageDefinition>

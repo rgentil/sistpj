@@ -22,6 +22,15 @@
   <ViewUsage
     Name="PjLocalidadView2"
     ViewObjectName="model.com.modelos.region.PjLocalidadView"/>
+  <ViewUsage
+    Name="PjRegionView1"
+    ViewObjectName="model.com.modelos.region.PjRegionView"/>
+  <ViewUsage
+    Name="PjRegionView2"
+    ViewObjectName="model.com.modelos.region.PjRegionView"/>
+  <ViewUsage
+    Name="PjProvinciaView3"
+    ViewObjectName="model.com.modelos.region.PjProvinciaView"/>
   <ViewLinkUsage
     Name="FkPrvPaisLink1"
     ViewLinkObjectName="model.com.modelos.region.FkPrvPaisLink"
@@ -33,5 +42,11 @@
     ViewLinkObjectName="model.com.modelos.region.FkLocPrvLink"
     SrcViewUsageName="model.com.modelos.region.RegionAppModule.PjProvinciaView1"
     DstViewUsageName="model.com.modelos.region.RegionAppModule.PjLocalidadView2"
+    Reversed="false"/>
+  <ViewLinkUsage
+    Name="FkPrvRegLink"
+    ViewLinkObjectName="model.com.modelos.region.FkPrvRegLink"
+    SrcViewUsageName="model.com.modelos.region.RegionAppModule.PjRegionView2"
+    DstViewUsageName="model.com.modelos.region.RegionAppModule.PjProvinciaView3"
     Reversed="false"/>
 </AppModule>
